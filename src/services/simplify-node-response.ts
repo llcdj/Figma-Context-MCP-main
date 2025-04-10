@@ -192,6 +192,16 @@ function parseNode(
     type,
   };
 
+  // 添加 boundingBox
+  if (hasValue("absoluteBoundingBox", n) && n.absoluteBoundingBox) {
+    simplified.boundingBox = {
+      x: n.absoluteBoundingBox.x,
+      y: n.absoluteBoundingBox.y,
+      width: n.absoluteBoundingBox.width,
+      height: n.absoluteBoundingBox.height,
+    };
+  }
+
   // text
   if (hasValue("style", n) && Object.keys(n.style).length) {
     const style = n.style;
